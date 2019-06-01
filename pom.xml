@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>thot-controller</module>
+        <module>thot-db</module>
     </modules>
 
     <parent>

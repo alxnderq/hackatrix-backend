@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/thot.iml" filepath="$PROJECT_DIR$/thot.iml" />
       <module fileurl="file://$PROJECT_DIR$/thot-controller/thot-controller.iml" filepath="$PROJECT_DIR$/thot-controller/thot-controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thot-db/thotdb.iml" filepath="$PROJECT_DIR$/thot-db/thotdb.iml" />
     </modules>
   </component>
 </project>

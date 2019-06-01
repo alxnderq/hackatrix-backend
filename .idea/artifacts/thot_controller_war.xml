@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="thot-controller-1.0-SNAPSHOT.war">
+    <root id="archive" name="thot.war">
       <element id="artifact" artifact-name="thot-controller:war exploded" />
     </root>
   </artifact>
