@@ -47,6 +47,12 @@ public class QuestionsServiceImpl implements QuestionsService {
             }
         }
 
-
     }
+
+    public List<QuestionsGetResponse> getQuestions(String studentCode, Integer categoryCode) {
+        List<Questions> questionsList = questionsRepository.findByIdCategory(categoryCode);
+        return questionResponseProcessor.convertQuestions(questionsList);
+    }
+
+
 }
