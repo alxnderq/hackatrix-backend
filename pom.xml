@@ -25,6 +25,15 @@
 				<role>Software Developer</role>
 			</roles>
 		</developer>
+		<developer>
+			<id>Hans</id>
+			<name>Hans Herrera B.</name>
+			<email>hans.herrerab@gmail.com</email>
+			<timezone>America/Lima</timezone>
+			<roles>
+				<role>Software Developer</role>
+			</roles>
+		</developer>
 	</developers>
 
 	<issueManagement>
