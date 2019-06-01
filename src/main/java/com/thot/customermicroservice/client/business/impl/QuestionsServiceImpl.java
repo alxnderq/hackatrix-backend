@@ -29,11 +29,6 @@ public class QuestionsServiceImpl implements QuestionsService {
     private QuestionResponseProcessor questionResponseProcessor;
 
     @Override
-    public List<QuestionsGetResponse> getQuestions(String studentCode, String categoryCode) {
-        return questionResponseProcessor.processorResponse(studentCode, categoryCode);
-    }
-
-    @Override
     public void validate(AnswerValidateRequest answerValidateRequest) {
         List<Results> resultsList = new ArrayList<>();
         for (RequestStudent requestStudent : answerValidateRequest.getRequestStudentList()) {
