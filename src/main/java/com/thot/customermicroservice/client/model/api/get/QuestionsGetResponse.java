@@ -13,6 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class QuestionsGetResponse {
 
-    List<String> questions;
+    private Integer id;
+    private String category;
+    private List<Detail> items;
+    private List<Option> options;
 
 }
