@@ -12,6 +12,7 @@
         <module>thot-controller</module>
         <module>thot-db</module>
         <module>thot-repository</module>
+        <module>thot-bussiness</module>
     </modules>
 
     <parent>
