@@ -4,12 +4,27 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
+import java.util.List;
+
+
 public class AnswerValidateRequest {
 
-    private String category;
-    private Integer idQuestion;
-    private String idAnswerOption;
+    private Integer idStudent;
+    private List<RequestStudent> requestStudentList;
+
+    public Integer getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(Integer idStudent) {
+        this.idStudent = idStudent;
+    }
+
+    public List<RequestStudent> getRequestStudentList() {
+        return requestStudentList;
+    }
+
+    public void setRequestStudentList(List<RequestStudent> requestStudentList) {
+        this.requestStudentList = requestStudentList;
+    }
 }

@@ -9,5 +9,5 @@ public interface QuestionsService {
 
     List<QuestionsGetResponse> getQuestions(String studentCode, String categoryCode);
 
-    Integer validate(AnswerValidateRequest answerValidateRequest);
+    void validate(AnswerValidateRequest answerValidateRequest);
 }
