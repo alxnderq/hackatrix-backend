@@ -88,11 +88,7 @@ public class QuestionsController {
             )
     })
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
     public void validate(@RequestBody AnswerValidateRequest request) {
-=======
-    public Integer validate(@RequestBody List<AnswerValidateRequest> request) {
->>>>>>> c03ea40d5e8d588e6596f9581f79a30e926eacac
-        return questionsService.validate(request);
+        questionsService.validate(request);
     }
 }
