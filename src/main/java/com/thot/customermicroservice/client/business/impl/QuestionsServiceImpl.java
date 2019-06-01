@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,18 +33,32 @@ public class QuestionsServiceImpl implements QuestionsService {
 
     @Override
     public void validate(AnswerValidateRequest answerValidateRequest) {
-        List<Results> resultsList = new ArrayList<>();
+        int averageCategoryA = 0;
+        int averageCategoryB = 0;
+        answerValidateRequest.getRequestStudentList().size();
         for (RequestStudent requestStudent : answerValidateRequest.getRequestStudentList()) {
-
             Questions questions = questionsRepository.findByIdAndCorrectOption(requestStudent.getIdQuestion(), requestStudent.getIdAnswerOption());
-
             if (questions != null) {
-                Results results = new Results();
-                results.setIdStudent(answerValidateRequest.getIdStudent());
-                results.setIdCategory(requestStudent.getCategory());
+                if (CATEGORY_ONE == requestStudent.getCategory()) {
+                    averageCategoryA++;
+                } else {
+                    averageCategoryB++;
+                }
             }
         }
-        //resutlsRepository.save(objecto)
+        Results result = new Results();
+        result.setIdCategory(1);
+        result.setIdStudent(answerValidateRequest.getIdStudent());
+        result.setAverage(averageCategoryA*4);
+        resutlsRepository.save(result);
+
+        Results result2 = new Results();
+        result2.setIdCategory(1);
+        result2.setIdStudent(answerValidateRequest.getIdStudent());
+        result2.setAverage(averageCategoryB*4);
+        resutlsRepository.save(result2);
+
+
     }
 
     public List<QuestionsGetResponse> getQuestions(String studentCode, Integer categoryCode) {
