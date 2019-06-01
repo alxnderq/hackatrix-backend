@@ -2,6 +2,7 @@ package com.thot.customermicroservice.expose.web;
 
 import com.thot.customermicroservice.client.business.QuestionsService;
 import com.thot.customermicroservice.client.model.api.get.QuestionsGetResponse;
+import com.thot.customermicroservice.client.model.api.validate.AnswerValidateRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -58,7 +59,36 @@ public class QuestionsController {
             )
     })
     @ResponseStatus(HttpStatus.OK)
-    public List<QuestionsGetResponse> getQuestions(@RequestParam String studentCode,@RequestParam String courseCode) {
-        return questionsService.getQuestions(studentCode,courseCode);
+    public List<QuestionsGetResponse> getQuestions(@RequestParam String studentCode,@RequestParam String categoryCode) {
+        return questionsService.getQuestions(studentCode,categoryCode);
+    }
+
+    /**
+     * Endpoint que permite validar las preguntas de un alumno
+     *
+     * @param request parametro con las respuesta
+     * @return
+     */
+    @PostMapping("/validateAnswers")
+    @ApiOperation(
+            value = "Almacena los clientes",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            response = AnswerValidateRequest.class,
+            httpMethod = "POST"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    code = 201,
+                    message = "Se registro el cliente correctamente."
+            ),
+            @ApiResponse(
+                    code = 400,
+                    message = "Se envi&oacute; datos incorrectos."
+            )
+    })
+    @ResponseStatus(HttpStatus.CREATED)
+    public Integer validate(@RequestBody AnswerValidateRequest request) {
+        return questionsService.validate(request);
     }
 }

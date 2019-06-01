@@ -3,6 +3,7 @@ package com.thot.customermicroservice.client.business.processor;
 import com.thot.customermicroservice.client.model.api.get.Detail;
 import com.thot.customermicroservice.client.model.api.get.Option;
 import com.thot.customermicroservice.client.model.api.get.QuestionsGetResponse;
+import com.thot.customermicroservice.client.model.api.validate.AnswerValidateRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class QuestionResponseProcessor {
 
-    public List<QuestionsGetResponse> processorResponse(String studentCode, String courseCode) {
+    public List<QuestionsGetResponse> processorResponse(String studentCode, String categoryCode) {
         List<QuestionsGetResponse> questionsGetResponses = new ArrayList<>();
         QuestionsGetResponse questionsGetResponse = new QuestionsGetResponse();
         List<Detail> items = new ArrayList<>();
@@ -31,12 +32,16 @@ public class QuestionResponseProcessor {
         options.add(option);
 
         questionsGetResponse.setCategory("espacial");
-        questionsGetResponse.setId(Integer.parseInt(studentCode));
+        questionsGetResponse.setId(Integer.parseInt(categoryCode));
         questionsGetResponse.setItems(items);
         questionsGetResponse.setOptions(options);
         questionsGetResponses.add(questionsGetResponse);
 
         return questionsGetResponses;
 
+    }
+
+    public Integer validate(AnswerValidateRequest answerValidateRequest) {
+        return 20;
     }
 }
