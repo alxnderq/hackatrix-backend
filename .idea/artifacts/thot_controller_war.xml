@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="thot-controller:war">
+    <output-path>$PROJECT_DIR$/thot-controller/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>thot-controller</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="thot-controller-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="thot-controller:war exploded" />
+    </root>
+  </artifact>
+</component>
