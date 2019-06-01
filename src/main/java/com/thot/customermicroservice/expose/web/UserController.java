@@ -3,6 +3,7 @@ package com.thot.customermicroservice.expose.web;
 import com.thot.customermicroservice.client.business.UserService;
 import com.thot.customermicroservice.client.dto.UserDTO;
 import com.thot.customermicroservice.client.model.api.get.Students;
+import com.thot.customermicroservice.client.model.api.get.Teachers;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class UserController {
     @PostMapping(value = "/login/student")
     public Students loginStudent(@RequestBody UserDTO user) {
         return userService.loginStudent(user.getCode(), user.getPassword());
+    }
+
+    @PostMapping(value = "/login/teacher")
+    public Teachers loginTeacher(@RequestBody UserDTO user) {
+        return userService.loginTeacher(user.getCode(), user.getPassword());
     }
 }

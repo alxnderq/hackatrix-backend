@@ -8,7 +8,7 @@ import com.thot.customermicroservice.client.model.api.get.Results;
 import com.thot.customermicroservice.client.model.api.validate.AnswerValidateRequest;
 import com.thot.customermicroservice.client.model.api.validate.RequestStudent;
 import com.thot.customermicroservice.client.resources.QuestionsRepository;
-import com.thot.customermicroservice.client.resources.ResutlsRepository;
+import com.thot.customermicroservice.client.resources.ResultsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class QuestionsServiceImpl implements QuestionsService {
     private QuestionResponseProcessor questionResponseProcessor;
 
     @Autowired
-    private ResutlsRepository resutlsRepository;
+    private ResultsRepository resutlsRepository;
 
     @Override
     public void validate(AnswerValidateRequest answerValidateRequest) {
