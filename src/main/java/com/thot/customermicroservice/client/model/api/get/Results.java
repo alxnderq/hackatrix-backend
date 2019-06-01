@@ -1,8 +1,6 @@
 package com.thot.customermicroservice.client.model.api.get;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
