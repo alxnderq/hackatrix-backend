@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class Option {
 
-    private Integer optionId;
-    private String optionDescription;
+    private Integer answerId;
+    private String answerDescription;
 }

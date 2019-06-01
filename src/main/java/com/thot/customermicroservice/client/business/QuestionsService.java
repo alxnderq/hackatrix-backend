@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface QuestionsService {
 
-    List<QuestionsGetResponse> getQuestions(String studentCode, String categoryCode);
+    List<QuestionsGetResponse> getQuestions(String studentCode, Integer categoryCode);
 
-    Integer validate(AnswerValidateRequest answerValidateRequest);
+    Integer validate(List<AnswerValidateRequest> request);
 }

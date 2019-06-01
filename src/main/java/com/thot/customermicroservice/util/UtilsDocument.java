@@ -2,8 +2,6 @@ package com.thot.customermicroservice.util;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.OptionalDouble;
 
 /**
  * Clase que contiene valores constantes
@@ -17,7 +15,7 @@ import java.util.OptionalDouble;
  * </ul>
  * <u>Changes</u>:<br/>
  * <ul>
- * <li>Mar 27, 2019 Creaci&oacute;n de la clase./li>
+ * <li>Jun 01, 2019 Creaci&oacute;n de la clase./li>
  * </ul>
  * @version 1.0
  */
@@ -29,24 +27,6 @@ public class UtilsDocument {
         calendar.setTime(date);
         calendar.add(field, valor);
         return calendar.getTime();
-    }
-
-    public static Double calculateSD(List<Integer> ages) {
-        double sum, standardDeviation;
-        int length = ages.size();
-        sum = ages.stream().mapToDouble(num -> num).sum();
-        double mean = sum / length;
-        standardDeviation = ages.stream().mapToDouble(num -> num).map(num -> Math.pow(num - mean, 2)).sum();
-        return Math.sqrt(standardDeviation / length);
-    }
-
-    public static Double average(List<Integer> ages) {
-        OptionalDouble average = ages
-                .stream()
-                .mapToDouble(a -> a)
-                .average();
-
-        return average.isPresent()?average.getAsDouble():Double.NaN;
     }
 
 }

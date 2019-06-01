@@ -1,14 +1,19 @@
 package com.thot.customermicroservice.client.business.processor;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.thot.customermicroservice.client.model.api.get.Detail;
 import com.thot.customermicroservice.client.model.api.get.Option;
+import com.thot.customermicroservice.client.model.api.get.Questions;
 import com.thot.customermicroservice.client.model.api.get.QuestionsGetResponse;
 import com.thot.customermicroservice.client.model.api.validate.AnswerValidateRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -16,32 +21,55 @@ import java.util.List;
 @Slf4j
 public class QuestionResponseProcessor {
 
-    public List<QuestionsGetResponse> processorResponse(String studentCode, String categoryCode) {
-        List<QuestionsGetResponse> questionsGetResponses = new ArrayList<>();
-        QuestionsGetResponse questionsGetResponse = new QuestionsGetResponse();
-        List<Detail> items = new ArrayList<>();
-        Detail detail = new Detail();
-        detail.setType("text");
-        detail.setData("Cuantos departamentos tuvieron con poca presencia incaica");
-        items.add(detail);
-
-        List<Option> options = new ArrayList<>();
-        Option option = new Option();
-        option.setOptionId(1);
-        option.setOptionDescription("3 departamentos");
-        options.add(option);
-
-        questionsGetResponse.setCategory("espacial");
-        questionsGetResponse.setId(Integer.parseInt(categoryCode));
-        questionsGetResponse.setItems(items);
-        questionsGetResponse.setOptions(options);
-        questionsGetResponses.add(questionsGetResponse);
-
-        return questionsGetResponses;
-
-    }
-
     public Integer validate(AnswerValidateRequest answerValidateRequest) {
         return 20;
     }
+
+    public Option convertOption(String jsonOption) {
+        Option option = new Gson().fromJson(jsonOption, Option.class);
+        return option;
+    }
+
+    public List<QuestionsGetResponse> convertQuestions(List<Questions> questionsList) {
+        List<QuestionsGetResponse> questionsGetResponseList = new ArrayList<>();
+
+        questionsList.forEach(question -> {
+            QuestionsGetResponse questionsGetResponse = new QuestionsGetResponse();
+            questionsGetResponse.setId(question.getId());
+            questionsGetResponse.setCategory(question.getIdCategory());
+            questionsGetResponse.setItems(convertItems(question.getItems()));
+            questionsGetResponse.setOptions(convertOptions(question.getOptions()));
+            questionsGetResponseList.add(questionsGetResponse);
+        });
+        return questionsGetResponseList;
+    }
+
+    public List<Detail> convertItems(String jsonOption) {
+        List<Detail> details = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        // 1. convert JSON array to Array objects
+        try {
+            Detail[] pp1 = mapper.readValue(jsonOption, Detail[].class);
+            // 2. convert JSON array to List of objects
+            details = Arrays.asList(mapper.readValue(jsonOption, Detail[].class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return details;
+    }
+
+    public List<Option> convertOptions(String jsonOption) {
+        List<Option> optionList = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        // 1. convert JSON array to Array objects
+        try {
+            Option[] pp1 = mapper.readValue(jsonOption, Option[].class);
+            // 2. convert JSON array to List of objects
+            optionList = Arrays.asList(mapper.readValue(jsonOption, Option[].class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return optionList;
+    }
+
 }

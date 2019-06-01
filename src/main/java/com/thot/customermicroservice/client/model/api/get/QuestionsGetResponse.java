@@ -14,7 +14,7 @@ import java.util.List;
 public class QuestionsGetResponse {
 
     private Integer id;
-    private String category;
+    private Integer category;
     private List<Detail> items;
     private List<Option> options;
 

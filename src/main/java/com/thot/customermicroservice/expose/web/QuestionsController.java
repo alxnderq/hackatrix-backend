@@ -59,7 +59,7 @@ public class QuestionsController {
             )
     })
     @ResponseStatus(HttpStatus.OK)
-    public List<QuestionsGetResponse> getQuestions(@RequestParam String studentCode,@RequestParam String categoryCode) {
+    public List<QuestionsGetResponse> getQuestions(@RequestParam String studentCode,@RequestParam Integer categoryCode) {
         return questionsService.getQuestions(studentCode,categoryCode);
     }
 
@@ -88,7 +88,7 @@ public class QuestionsController {
             )
     })
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer validate(@RequestBody AnswerValidateRequest request) {
+    public Integer validate(@RequestBody List<AnswerValidateRequest> request) {
         return questionsService.validate(request);
     }
 }

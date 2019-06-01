@@ -30,7 +30,7 @@ public class Questions {
     @Column(name = "items")
     private String items;
 
-    @Column(name = "options")
+    @Column(name = "answers")
     private String options;
 
 
